@@ -1,7 +1,7 @@
 # [MOOD: Masked Image Modeling is All You Need]
 
 Official PyTorch implementation and pretrained models of Rethinking Out-of-distribution (OOD) Detection:
-Masked Image Modeling Is All You Need.
+Masked Image Modeling Is All You Need. [[paper]](https://arxiv.org/abs/2302.02615)
 
 ## Setup
 Follow official [BEiT](https://github.com/microsoft/unilm/tree/master/beit) to setup.
