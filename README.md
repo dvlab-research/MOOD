@@ -204,7 +204,12 @@ For ImageNet-30,
 
 If you find this repository useful, please consider citing our work:
 ```
-
+@misc{https://doi.org/10.48550/arxiv.2302.02615,
+  doi = {10.48550/ARXIV.2302.02615},
+  url = {https://arxiv.org/abs/2302.02615},
+  author = {Li, Jingyao and Chen, Pengguang and Yu, Shaozuo and He, Zexin and Liu, Shu and Jia, Jiaya},
+  keywords = {Computer Vision and Pattern Recognition (cs.CV), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title = {Rethinking Out-of-distribution (OOD) Detection: Masked Image Modeling is All You Need},
 ```
 
 ## Acknowledgement
