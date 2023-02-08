@@ -1,0 +1,8 @@
+**/__pycache__/**
+checkpoints/
+run.md
+output
+pretrained/
+tokenizer/
+*.sh
+eval_results/
