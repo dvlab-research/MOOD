@@ -45,20 +45,8 @@ Download checkpoints that are **self-supervised pretrained** on ImageNet-22k:
 - BEiT-base: [beit_base_patch16_224_pt22k](https://conversationhub.blob.core.windows.net/beit-share-public/beit/beit_base_patch16_224_pt22k.pth)
 - BEiT-large: [beit_large_patch16_224_pt22k](https://conversationhub.blob.core.windows.net/beit-share-public/beit/beit_large_patch16_224_pt22k.pth)
 
-
 ## Fine-tuning on In-Distribution Dataset
 ### Multi-Class Fine-tuning
-For ViT-base,
-```bash
-OMP_NUM_THREADS=1 python -m torch.distributed.launch --nproc_per_node=$NUM_GPUS run_class_finetuning.py \
-    --model beit_base_patch16_224 --data_path $ID_DATA_PATH --data_set $ID_DATASET \
-    --nb_classes $NUM_OF_CLASSES --disable_eval_during_finetuning \
-    --finetune https://conversationhub.blob.core.windows.net/beit-share-public/beit/beit_base_patch16_224_pt22k.pth \
-    --output_dir $OUTPUT_DIR --batch_size 256 --lr 3e-3 --update_freq 1 \
-    --warmup_epochs 5 --epochs 90 --layer_decay 0.65 --drop_path 0.2 \
-    --weight_decay 0.05 --enable_deepspeed --layer_scale_init_value 0.1 --clip_grad 3.0
-```
-
 For ViT-large,
 ```bash
 OMP_NUM_THREADS=1 python -m torch.distributed.launch --nproc_per_node=8 run_class_finetuning.py \
@@ -72,18 +60,6 @@ The hyper-parameters are the same with the official [BEiT](https://github.com/mi
 
 ### One-class Fine-tuning
 For one-class fine-tuning, please assign a class as in-distribution by adding command '--class_idx $CLASS_IDX'. Others are out-of-distribution. We support three in-distribution datasets, including `['cifar100', 'cifar10' and 'imagenet30']`. Noted that we only fine-tuned one-class imagenet30 in the original paper.
-
-For ViT-base,
-```bash
-OMP_NUM_THREADS=1 python -m torch.distributed.launch --nproc_per_node=$NUM_GPUS run_class_finetuning.py \
-    --model beit_base_patch16_224 --data_path $ID_DATA_PATH --data_set $ID_DATASET \
-    --nb_classes $NUM_OF_CLASSES --disable_eval_during_finetuning \
-    --finetune https://conversationhub.blob.core.windows.net/beit-share-public/beit/beit_base_patch16_224_pt22k.pth \
-    --output_dir $OUTPUT_DIR --batch_size 256 --lr 3e-3 --update_freq 1 \
-    --warmup_epochs 5 --epochs 90 --layer_decay 0.65 --drop_path 0.2 \
-    --weight_decay 0.05 --enable_deepspeed --layer_scale_init_value 0.1 --clip_grad 3.0 --class_idx $CLASS_IDX
-``` 
-
 For ViT-large,
 ```bash
 OMP_NUM_THREADS=1 python -m torch.distributed.launch --nproc_per_node=8 run_class_finetuning.py \
@@ -164,6 +140,7 @@ If you find this repository useful, please consider citing our work:
   author = {Li, Jingyao and Chen, Pengguang and Yu, Shaozuo and He, Zexin and Liu, Shu and Jia, Jiaya},
   keywords = {Computer Vision and Pattern Recognition (cs.CV), FOS: Computer and information sciences, FOS: Computer and information sciences},
   title = {Rethinking Out-of-distribution (OOD) Detection: Masked Image Modeling is All You Need},
+}
 ```
 
 ## Acknowledgement
