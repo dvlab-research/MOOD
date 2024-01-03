@@ -3,7 +3,9 @@
 ![framework](MOODv2/imgs/framework.png)
 
 ## Performance
-![performance](MOODv2/imgs/performance.png)
+![performance](MOODv2/imgs/distribution.png)
+
+![table](MOODv2/imgs/moodv2_table.png)
 
 ## DataSets
 Dataset source can be downloaded here.
