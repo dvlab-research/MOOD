@@ -3,8 +3,6 @@ The crux of effective out-of-distribution (OOD) detection lies in acquiring a ro
 ![framework](imgs/framework.png)
 
 ## Performance
-![performance](imgs/distribution.png)
-
 ![table](imgs/moodv2_table.png)
 
 ## DataSets
