@@ -3,6 +3,9 @@
 Official PyTorch implementation and pretrained models of Rethinking Out-of-distribution (OOD) Detection:
 Masked Image Modeling Is All You Need (MOOD in short). Our [paper](https://arxiv.org/abs/2302.02615) is accepted by CVPR2023.
 
+## Abstract
+The core of out-of-distribution (OOD) detection is to learn the in-distribution (ID) representation, which is distinguishable from OOD samples. Previous work applied recognition-based methods to learn the ID features, which tend to learn shortcuts instead of comprehensive representations. In this work, we find surprisingly that simply using reconstruction-based methods could boost the performance of OOD detection significantly. We deeply explore the main contributors of OOD detection and find that reconstruction-based pretext tasks have the potential to provide a generally applicable and efficacious prior, which benefits the model in learning intrinsic data distributions of the ID dataset. Specifically, we take Masked Image Modeling as a pretext task for our OOD detection framework (MOOD). Without bells and whistles, MOOD outperforms previous SOTA of one-class OOD detection by 5.7%, multi-class OOD detection by 3.0%, and near-distribution OOD detection by 2.1%. It even defeats the 10-shot-per-class outlier exposure OOD detection, although we do not include any OOD samples for our detection.
+
 ## Setup
 Follow official [BEiT](https://github.com/microsoft/unilm/tree/master/beit) to setup.
 
