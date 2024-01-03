@@ -1,5 +1,5 @@
 # MOOD
-[moodv2](MOODv2/imgs/framework.png)
+![moodv2](MOODv2/imgs/framework.png)
 
 ## [MOODv1](MOODv1)
 <img src="MOODv1/imgs/moodv1_performance.png" alt="moodv1" width="500">
