@@ -147,3 +147,14 @@ If you find this repository useful, please consider citing our work:
 
 This repository is built using the [beit](https://github.com/microsoft/unilm/tree/master/beit) library and the [SSD](https://github.com/inspire-group/SSD) repository.
 
+## Citation
+If you find our research helpful, kindly cite
+```
+@inproceedings{li2023rethinking,
+  title={Rethinking Out-of-distribution (OOD) Detection: Masked Image Modeling is All You Need},
+  author={Li, Jingyao and Chen, Pengguang and He, Zexin and Yu, Shaozuo and Liu, Shu and Jia, Jiaya},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={11578--11589},
+  year={2023}
+}
+```
