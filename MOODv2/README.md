@@ -1,11 +1,11 @@
 # Official code for MOODv2: Masked Image Modeling for Out-of-Distribution (OOD) Detection
 
-![framework](MOODv2/imgs/framework.png)
+![framework](imgs/framework.png)
 
 ## Performance
-![performance](MOODv2/imgs/distribution.png)
+![performance](imgs/distribution.png)
 
-![table](MOODv2/imgs/moodv2_table.png)
+![table](imgs/moodv2_table.png)
 
 ## DataSets
 Dataset source can be downloaded here.
