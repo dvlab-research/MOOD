@@ -15,7 +15,7 @@ from mmpretrain.apis import init_model
 def parse_args():
     parser = argparse.ArgumentParser(description='Say hello')
     parser.add_argument('data_root', help='Path to data')
-    parser.add_argument('out_file', help='Path to output file')
+    parser.add_argument('--out_file', help='Path to output file')
     parser.add_argument(
         '--cfg', default='configs/vit-base-p16-384.py', help='Path to config')
     parser.add_argument(
@@ -23,9 +23,9 @@ def parse_args():
         default='checkpoints/vit-base-p16_in21k-pre-3rdparty_ft-64xb64_in1k-'
         '384_20210928-98e8652b.pth',
         help='Path to checkpoint')
-    parser.add_argument('--img_list', default=None, help='Path to image list')
-    parser.add_argument('--batch', type=int, default=256, help='Path to data')
-    parser.add_argument('--workers', type=int, default=4, help='Path to data')
+    parser.add_argument('--img_list', help='Path to image list')
+    parser.add_argument('--batch', type=int, default=256, help='batch size')
+    parser.add_argument('--workers', type=int, default=4, help='num of workers')
     parser.add_argument('--fc_save_path', default=None, help='Path to save fc')
     return parser.parse_args()
 

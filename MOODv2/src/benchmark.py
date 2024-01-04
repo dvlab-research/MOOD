@@ -19,8 +19,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Say hello')
     parser.add_argument('fc', help='Path to fc path')
     parser.add_argument('id_data', help='id data name')
-    parser.add_argument('id_train_feature', help='Path to data')
-    parser.add_argument('id_val_feature', help='Path to output file')
+    parser.add_argument('id_train_feature', help='Path to train feature')
+    parser.add_argument('id_val_feature', help='Path to val features')
     parser.add_argument('ood_features', nargs='+', help='Path to ood features')
     parser.add_argument(
         '--class_id', type=int, help='class id for 1 class ood detection')
@@ -104,7 +104,7 @@ def gradnorm(x, w, b, num_cls):
 
     confs = []
 
-    for i in tqdm(x):
+    for i in tqdm(x, desc='Computing Gradnorm ID/OOD score'):
         targets = torch.ones((1, num_cls)).cuda()
         fc.zero_grad()
         loss = torch.mean(
@@ -185,12 +185,12 @@ def main():
         print(f'{name} {ood.shape}')
 
     if os.path.exists(args.fc):
-        print('computing logits...')
+        print('=> Computing logits...')
         logit_id_train = feature_id_train @ w.T + b
         logit_id_val = feature_id_val @ w.T + b
         logit_oods = {name: feat @ w.T + b for name, feat in feature_oods.items()}
 
-        print('computing softmax...')
+        print('=> Computing softmax...')
         softmax_id_train = softmax(logit_id_train, axis=-1)
         softmax_id_val = softmax(logit_id_val, axis=-1)
         softmax_oods = {
@@ -339,14 +339,14 @@ def main():
             DIM = feature_id_val.shape[-1] // 2
         print(f'{DIM=}')
 
-        print('computing principal space...')
+        print('=> Computing principal space...')
         ec = EmpiricalCovariance(assume_centered=True)
         ec.fit(feature_id_train - u)
         eig_vals, eigen_vectors = np.linalg.eig(ec.covariance_)
         NS = np.ascontiguousarray(
             (eigen_vectors.T[np.argsort(eig_vals * -1)[DIM:]]).T)
 
-        print('computing alpha...')
+        print('=> Computing alpha...')
         vlogit_id_train = norm(np.matmul(feature_id_train - u, NS), axis=-1)
         alpha = logit_id_train.max(axis=-1).mean() / vlogit_id_train.mean()
         print(f'{alpha=:.4f}')
@@ -393,7 +393,7 @@ def main():
             DIM = feature_id_val.shape[-1] // 2
         print(f'{DIM=}')
 
-        print('computing principal space...')
+        print('=> Computing principal space...')
         ec = EmpiricalCovariance(assume_centered=True)
         ec.fit(feature_id_train - u)
         eig_vals, eigen_vectors = np.linalg.eig(ec.covariance_)
@@ -460,16 +460,16 @@ def main():
         print(f'\n{method}')
         result = []
 
-        print('computing classwise mean feature...')
+        print('=> ...')
         train_means = []
         train_feat_centered = []
-        for i in tqdm(range(train_labels.max() + 1)):
+        for i in tqdm(range(train_labels.max() + 1), desc='Computing classwise mean feature'):
             fs = feature_id_train[train_labels == i]
             _m = fs.mean(axis=0)
             train_means.append(_m)
             train_feat_centered.extend(fs - _m)
 
-        print('computing precision matrix...')
+        print('=> Computing precision matrix...')
         ec = EmpiricalCovariance(assume_centered=True)
         ec.fit(np.array(train_feat_centered).astype(np.float64))
 
@@ -479,7 +479,7 @@ def main():
 
         score_id = -np.array(
             [(((f - mean) @ prec) * (f - mean)).sum(axis=-1).min().cpu().item()
-            for f in tqdm(torch.from_numpy(feature_id_val).cuda().float())])
+            for f in tqdm(torch.from_numpy(feature_id_val).cuda().float(),  desc='Computing Mahalanobis ID score')])
 
         if score_path:
             os.makedirs(os.path.join(score_path, method), exist_ok=True)
@@ -490,7 +490,7 @@ def main():
         for name, feature_ood in feature_oods.items():
             score_ood = -np.array([
                 (((f - mean) @ prec) * (f - mean)).sum(axis=-1).min().cpu().item()
-                for f in tqdm(torch.from_numpy(feature_ood).cuda().float())
+                for f in tqdm(torch.from_numpy(feature_ood).cuda().float(),  desc='Computing Mahalanobis ID score')
             ])
 
             if score_path:
@@ -512,10 +512,9 @@ def main():
         print(f'\n{method}')
         result = []
 
-        print('computing classwise mean softmax...')
         pred_labels_train = np.argmax(softmax_id_train, axis=-1)
         mean_softmax_train = []
-        for i in tqdm(range(num_cls)):
+        for i in tqdm(range(num_cls), desc='Computing classwise mean softmax'):
             mean_softmax = softmax_id_train[pred_labels_train == i]
             if mean_softmax.shape[0] == 0:
                 mean_softmax_train.append(np.zeros((num_cls)))
