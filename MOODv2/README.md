@@ -55,14 +55,14 @@ To predict an input image is in-distribution of out-of-distribution, we support 
 - `KL-Matching`
 
 ### Example Usage
-Step 1: Download the checkpoint of the vision encoder
+**Step 1: Download the checkpoint of the vision encoder**
 ```bash 
 mkdir pretrain & cd pretrain 
 wget https://download.openmmlab.com/mmclassification/v0/beit/beit-base_3rdparty_in1k_20221114-c0a4df23.pth
 cd ..
 ```
 
-Step 2: Extract the features and logits from the vision encoder
+**Step 2: Extract the features and logits from the vision encoder**
 ```bash 
 # ID train features
 python src/extract_feature_vit.py $IMAGENET_PATH \
@@ -81,10 +81,11 @@ python src/extract_feature_vit.py $IMAGENET_PATH \
 # Logits
 python src/extract_feature_vit.py $IMAGENET_PATH \
    --cfg configs/beit-base-p16_224px.py \
-   --checkpoint pretrain/beit-base_3rdparty_in1k_20221114-c0a4df23.pth \ --fc_save_path outputs/fc.pkl \
+   --checkpoint pretrain/beit-base_3rdparty_in1k_20221114-c0a4df23.pth \ 
+   --fc_save_path outputs/fc.pkl \
 ```
 
-Step 3: Detect your image
+**Step 3: Detect your image**
 ```bash
 python src/demo.py \
    --img_path imgs/DTD_cracked_0004.jpg \
@@ -109,9 +110,9 @@ Mahalanobis  evaluation:   out-of-distribution
 ```
 
 ## OOD Detection Benchmark
-Step 1: Download the checkpoint of the vision encoder
+**Step 1: Download the checkpoint of the vision encoder**
 
-Step 2: Extract the features and logits from the vision encoder
+**Step 2: Extract the features and logits from the vision encoder**
 
 Step 2.1 Extract features
    ```bash
@@ -138,7 +139,7 @@ Step 2.2 Extract w and b in fc
    python src/extract_feature_vit.py $DATA_ROOT $OUT_FILE --cfg $CFG --checkpoint $CHECKPOINT --fc_save_path outputs/vit_fc.pkl 
    ```
 
-Step 3: Evaluation
+**Step 3: Evaluation**
    ```bash
    python src/benchmark.py $FC_SAVE_PATH $ID_DATA $ID_TRAIN_FEATURE $ID_VAL_FEATURE $OOD_FEATURE
    ```
