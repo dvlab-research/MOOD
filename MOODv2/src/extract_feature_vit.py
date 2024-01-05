@@ -9,8 +9,9 @@ import torch
 import torchvision as tv
 from tqdm import tqdm
 
-from .list_dataset import ImageFilelist
+from list_dataset import ImageFilelist
 from mmpretrain.apis import init_model
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Say hello')
