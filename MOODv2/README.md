@@ -58,8 +58,8 @@ To predict an input image is in-distribution or out-of-distribution, we support 
 
 **Step 1: Download the features and logits**
 ```bash 
-git clone https://huggingface.co/datasets/JingyaoLi/MOODv2-Data
-cd MOODv2-Data
+git clone https://huggingface.co/JingyaoLi/MOODv2
+cd MOODv2
 git lfs pull
 ```
 
