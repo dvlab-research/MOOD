@@ -1,6 +1,6 @@
 # MOOD
 <p align="center">
-• 🤗 <a href="https://huggingface.co/JingyaoLi/MOODv2" target="_blank">Data </a> 
+• 🤗 <a href="https://huggingface.co/JingyaoLi/MOODv2" target="_blank">Model </a> 
 • 🐱 <a href="https://github.com/dvlab-research/MOOD" target="_blank">Code</a> 
 • 📃 <a href="https://arxiv.org/abs/2302.02615" target="_blank">MOODv1</a> <br>
 </p>
