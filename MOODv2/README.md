@@ -1,14 +1,10 @@
-<p style="font-size:28px;" align="center">
-🏠 MOODv2
-</p>
+# Official code for MOODv2: Masked Image Modeling for Out-of-Distribution Detection
 
 <p align="center">
 • 🤗 <a href="https://huggingface.co/datasets/JingyaoLi/MoTCode-Data" target="_blank">Data </a> 
 • 🐱 <a href="https://github.com/dvlab-research/MOOD" target="_blank">Code</a> 
 • 📃 <a href="https://arxiv.org/abs/2302.02615" target="_blank">Paper</a> <br>
 </p>
-
-This is the official code for MOODv2: Masked Image Modeling for Out-of-Distribution Detection.
 
 ## Abstract
 The crux of effective out-of-distribution (OOD) detection lies in acquiring a robust in-distribution (ID) representation, distinct from OOD samples. While previous methods predominantly leaned on recognition-based techniques for this purpose, they often resulted in shortcut learning, lacking comprehensive representations. In our study, we conducted a comprehensive analysis, exploring distinct pretraining tasks and employing various OOD score functions. The results highlight that the feature representations pre-trained through reconstruction yield a notable enhancement and narrow the performance gap among various score functions. This suggests that even simple score functions can rival complex ones when leveraging reconstruction-based pretext tasks. Reconstruction-based pretext tasks adapt well to various score functions. As such, it holds promising potential for further expansion. Our OOD detection framework, MOODv2, employs the masked image modeling pretext task. Without bells and whistles, MOODv2 impressively enhances 14.30% AUROC to 95.68% on ImageNet and achieves 99.98% on CIFAR-10.
