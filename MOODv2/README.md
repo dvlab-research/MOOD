@@ -68,7 +68,7 @@ git lfs pull
 python src/demo.py \
    --img_path imgs/DTD_cracked_0004.jpg \
    --cfg configs/beit-base-p16_224px.py \
-   --checkpoint pretrain/beitv2-base_3rdparty_in1k_20221114-73e11905.pth \
+   --checkpoint pretrain/beitv2-base.pth \
    --fc_save_path data/fc.pkl \
    --id_train_feature data/imagenet_train.pkl \
    --id_val_feature data/imagenet_test.pkl \
@@ -93,7 +93,7 @@ In case you want to extract the features and logits from the vision encoder with
 **Step 1: Download the checkpoint of the vision encoder**
 ```bash 
 mkdir pretrain & cd pretrain 
-wget https://download.openmmlab.com/mmclassification/v0/beit/beitv2-base_3rdparty_in1k_20221114-73e11905.pth
+wget https://huggingface.co/JingyaoLi/MOODv2/resolve/main/pretrain/beitv2-base.pth
 cd ..
 ```
 
@@ -103,20 +103,20 @@ cd ..
 python src/extract_feature_vit.py $IMAGENET_PATH \
    --out_file outputs/imagenet_train.pkl \
    --cfg configs/beit-base-p16_224px.py \
-   --checkpoint pretrain/beitv2-base_3rdparty_in1k_20221114-73e11905.pth \
+   --checkpoint pretrain/beitv2-base.pth \
    --img_list datalists/imagenet2012_train_random_200k.txt 
 
 # ID test features
 python src/extract_feature_vit.py $IMAGENET_PATH \
    --out_file outputs/imagenet_test.pkl \
    --cfg configs/beit-base-p16_224px.py \
-   --checkpoint pretrain/beitv2-base_3rdparty_in1k_20221114-73e11905.pth \
+   --checkpoint pretrain/beitv2-base.pth \
    --img_list datalists/imagenet2012_val_list.txt 
 
 # Logits
 python src/extract_feature_vit.py $IMAGENET_PATH \
    --cfg configs/beit-base-p16_224px.py \
-   --checkpoint pretrain/beitv2-base_3rdparty_in1k_20221114-73e11905.pth \ 
+   --checkpoint pretrain/beitv2-base.pth \ 
    --fc_save_path outputs/fc.pkl \
 ```
 
@@ -125,7 +125,7 @@ python src/extract_feature_vit.py $IMAGENET_PATH \
 python src/demo.py \
    --img_path imgs/DTD_cracked_0004.jpg \
    --cfg configs/beit-base-p16_224px.py \
-   --checkpoint pretrain/beitv2-base_3rdparty_in1k_20221114-73e11905.pth \
+   --checkpoint pretrain/beitv2-base.pth \
    --fc_save_path outputs/fc.pkl \
    --id_train_feature outputs/imagenet_train.pkl \
    --id_val_feature outputs/imagenet_test.pkl \
@@ -136,7 +136,7 @@ python src/demo.py \
 **Step 1: Download the checkpoint of the vision encoder**
 |  Name |  Paper  | Config  | Checkpoint | Train/Test Command |
 |:------:|:-------:|:-------:|:-------:|:-------:|
-| BEiT   | [paper](https://arxiv.org/abs/2106.08254) | [config](configs/beit-base-p16_224px.py) | [ckpt](https://download.openmmlab.com/mmclassification/v0/beit/beitv2-base_3rdparty_in1k_20221114-73e11905.pth) | [README](https://github.com/open-mmlab/mmpretrain/tree/main/configs/beit) |
+| BEiT   | [paper](https://arxiv.org/abs/2106.08254) | [config](configs/beit-base-p16_224px.py) | [ckpt](https://download.openmmlab.com/mmclassification/v0/beit/beit-base_3rdparty_in1k_20221114-c0a4df23.pth) | [README](https://github.com/open-mmlab/mmpretrain/tree/main/configs/beit) |
 | BEiTv2 | [paper](https://arxiv.org/abs/2208.06366) | [config](configs/beit-base-p16_224px.py) | [ckpt](https://download.openmmlab.com/mmclassification/v0/beit/beitv2-base_3rdparty_in1k_20221114-73e11905.pth) | [README](https://github.com/open-mmlab/mmpretrain/tree/main/configs/beitv2) |
 | ViT    | [paper](https://arxiv.org/abs/2010.11929) | [config](configs/vit-base-p16_224px.py) | [ckpt](https://download.openmmlab.com/mmclassification/v0/vit/vit-base-p16_pt-32xb128-mae_in1k_20220623-4c544545.pth) | [README](https://github.com/open-mmlab/mmpretrain/tree/main/configs/vision_transformer) |
 | MoCov3 | [paper](https://arxiv.org/abs/2104.02057) | [config](configs/vit-base-p16_224px.py) | [ckpt](https://download.openmmlab.com/mmselfsup/1.x/mocov3/mocov3_vit-base-p16_16xb256-amp-coslr-300e_in1k/vit-base-p16_ft-8xb64-coslr-150e_in1k/vit-base-p16_ft-8xb64-coslr-150e_in1k_20220826-f1e6c442.pth) | [README](https://github.com/open-mmlab/mmpretrain/tree/main/configs/mocov3) |
