@@ -69,7 +69,7 @@ python src/demo.py \
    --img_path imgs/DTD_cracked_0004.jpg \
    --cfg configs/beit-base-p16_224px.py \
    --checkpoint pretrain/beitv2-base.pth \
-   --fc_save_path data/fc.pkl \
+   --fc data/fc.pkl \
    --id_train_feature data/imagenet_train.pkl \
    --id_val_feature data/imagenet_test.pkl \
    --methods MSP MaxLogit Energy Energy+React ViM Residual GradNorm Mahalanobis
@@ -126,7 +126,7 @@ python src/demo.py \
    --img_path imgs/DTD_cracked_0004.jpg \
    --cfg configs/beit-base-p16_224px.py \
    --checkpoint pretrain/beitv2-base.pth \
-   --fc_save_path outputs/fc.pkl \
+   --fc outputs/fc.pkl \
    --id_train_feature outputs/imagenet_train.pkl \
    --id_val_feature outputs/imagenet_test.pkl \
    --methods MSP MaxLogit Energy Energy+React ViM Residual GradNorm Mahalanobis
