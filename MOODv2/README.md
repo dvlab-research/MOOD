@@ -3,7 +3,8 @@
 <p align="center">
 • 🤗 <a href="https://huggingface.co/JingyaoLi/MOODv2" target="_blank">Model </a> 
 • 🐱 <a href="https://github.com/dvlab-research/MOOD" target="_blank">Code</a> 
-• 📃 <a href="https://arxiv.org/abs/2302.02615" target="_blank">MOODv1</a> <br>
+• 📃 <a href="https://arxiv.org/abs/2302.02615" target="_blank">MOODv1</a>
+• 📃 <a href="https://arxiv.org/abs/2401.02611" target="_blank">MOODv2</a> <br>
 </p>
 
 <p align="center">
